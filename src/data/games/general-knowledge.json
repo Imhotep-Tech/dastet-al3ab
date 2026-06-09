@@ -1,0 +1,15 @@
+{
+  "id": "general-knowledge",
+  "engineTemplate": "turn-based",
+  "mode": "individual",
+  "turnStrategy": "open",
+  "allowPass": false,
+  "title": "أسئلة عامة",
+  "author": "إيمحو",
+  "hasTimer": false,
+  "allowElimination": false,
+  "themeColor": "#EF4444",
+  "logo": "individual",
+  "instructions": "لعبة الأسئلة العامة السريعة!\nالسؤال مطروح للجميع، ومن يجاوب أسرع يتم اختياره ليأخذ النقطة.",
+  "cardsFile": "individual-cards.json"
+}

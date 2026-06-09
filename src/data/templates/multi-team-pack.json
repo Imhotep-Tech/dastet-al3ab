@@ -1,0 +1,14 @@
+{
+  "id": "multi-team-pack",
+  "engineTemplate": "turn-based",
+  "mode": "multi-team",
+  "title": "اللعب الجماعي",
+  "hasTimer": true,
+  "defaultTimerSeconds": 45,
+  "isTimerCustomizable": true,
+  "allowElimination": true,
+  "themeColor": "#10B981",
+  "logo": "multi-team",
+  "instructions": "خطوات اللعب الجماعي المتعدد:\n1. كونوا فريقين أو أكثر.\n2. سيواجه كل فريق تحدياً أو لغزاً خاصاً به.\n3. في حال الفشل في إنجاز التحدي، قد يتم إقصاء الفريق.\n4. الفريق الذي يجمع أعلى النقاط أو يبقى للنهاية يفوز.",
+  "cardsFile": "multi-team-cards.json"
+}

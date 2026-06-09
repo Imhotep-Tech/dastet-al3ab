@@ -1,0 +1,14 @@
+{
+  "id": "individual-pack",
+  "engineTemplate": "turn-based",
+  "mode": "individual",
+  "turnStrategy": "sequential",
+  "allowPass": true,
+  "title": "لعب فردي",
+  "hasTimer": false,
+  "allowElimination": true,
+  "themeColor": "#EF4444",
+  "logo": "individual",
+  "instructions": "خطوات اللعب الفردي:\n1. أضف أسماء اللاعبين المشاركين.\n2. سيتم عرض سؤال أو تحدي لكل لاعب بالدور.\n3. إذا لم تعرف الإجابة يمكنك تمرير السؤال للاعب التالي.\n4. صاحب أعلى نقاط بنهاية الأسئلة هو الفائز.",
+  "cardsFile": "individual-cards.json"
+}

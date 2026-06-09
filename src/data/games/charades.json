@@ -1,0 +1,17 @@
+{
+  "id": "charades",
+  "engineTemplate": "turn-based",
+  "mode": "two-team",
+  "turnStrategy": "sequential",
+  "allowPass": true,
+  "title": "بدون كلام",
+  "author": "إيمحو",
+  "hasTimer": true,
+  "defaultTimerSeconds": 60,
+  "isTimerCustomizable": true,
+  "allowElimination": false,
+  "themeColor": "#3B82F6",
+  "logo": "two-team",
+  "instructions": "لعبة التمثيل بدون كلام الشهيرة!\nاشرح الكلمة لفريقك باستخدام لغة الجسد فقط. يمنع الكلام أو إصدار أي أصوات.",
+  "cardsFile": "two-team-cards.json"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "bomb-game",
+  "engineTemplate": "hot-potato",
+  "mode": "multi-team",
+  "title": "القنبلة",
+  "author": "تطوير المجتمع",
+  "hasTimer": true,
+  "defaultTimerSeconds": 60,
+  "isTimerCustomizable": true,
+  "allowElimination": true,
+  "themeColor": "#ef4444",
+  "logo": "bomb",
+  "instructions": "خطوات لعبة القنبلة:\n1. كونوا فرقاً ثنائية، كل فريق يتكون من لاعبين.\n2. يمسك لاعب الهاتف، ويحاول شرح الكلمة الظاهرة لزميله دون ذكرها.\n3. إذا حزرها زميله، اضغط (إجابة صحيحة) ومرر الهاتف للفريق التالي.\n4. العداد مستمر ولا يتوقف! الفريق الذي ينفجر العداد والهاتف بيده يتم إقصاؤه.\n5. الفريق الأخير المتبقي هو الفائز.",
+  "cardsFile": "bomb-cards.json"
+}

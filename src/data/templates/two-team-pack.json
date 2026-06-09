@@ -1,0 +1,14 @@
+{
+  "id": "two-team-pack",
+  "engineTemplate": "turn-based",
+  "mode": "two-team",
+  "title": "تحدي الفريقين",
+  "hasTimer": true,
+  "defaultTimerSeconds": 30,
+  "isTimerCustomizable": true,
+  "allowElimination": false,
+  "themeColor": "#3B82F6",
+  "logo": "two-team",
+  "instructions": "خطوات لعب الفريقين:\n1. ينقسم اللاعبون إلى فريقين متنافسين.\n2. سيتم عرض تحدي لكل فريق بالتبادل.\n3. على الفريق إنجاز التحدي قبل انتهاء الوقت المخصص.\n4. الفريق الأسرع أو الذي ينجز أكبر عدد من التحديات هو الفائز.",
+  "cardsFile": "two-team-cards.json"
+}
