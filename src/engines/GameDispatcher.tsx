@@ -6,18 +6,23 @@ import McqEngine from "./McqEngine";
 import TabooEngine from "./TabooEngine";
 import ImposterEngine from "./ImposterEngine";
 
-export default function GameDispatcher({ config }: { config: any }) {
-  if (config.engineTemplate === "hot-potato") {
-    return <HotPotatoEngine config={config} />;
-  }
-  if (config.engineTemplate === "mcq") {
-    return <McqEngine config={config} />;
-  }
-  if (config.engineTemplate === "taboo") {
-    return <TabooEngine config={config} />;
-  }
-  if (config.engineTemplate === "imposter") {
-    return <ImposterEngine config={config} />;
-  }
-  return <TurnBasedEngine config={config} />;
+// Define a type for your config to get rid of the 'any'
+export interface GameConfig {
+  engineTemplate: string;
+  [key: string]: any; 
+}
+
+const ENGINE_MAP: Record<string, React.ElementType> = {
+  "hot-potato": HotPotatoEngine,
+  "mcq": McqEngine,
+  "taboo": TabooEngine,
+  "imposter": ImposterEngine,
+  "turn-based": TurnBasedEngine,
+};
+
+export default function GameDispatcher({ config }: { config: GameConfig }) {
+  // Fallback to TurnBasedEngine if the template isn't found
+  const EngineComponent = ENGINE_MAP[config.engineTemplate] || TurnBasedEngine;
+  
+  return <EngineComponent config={config} />;
 }

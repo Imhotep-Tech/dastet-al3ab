@@ -3,27 +3,47 @@
 import { useState, useEffect } from "react";
 import { Play, RotateCcw } from "lucide-react";
 
-export default function Timer({
-  defaultSeconds,
-  themeColor
-}: {
+interface TimerProps {
   defaultSeconds: number;
   themeColor: string;
-}) {
+  onTimeUp?: () => void; // Tell the parent engine when time is out
+}
+
+export default function Timer({ defaultSeconds, themeColor, onTimeUp }: TimerProps) {
   const [seconds, setSeconds] = useState(defaultSeconds);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
+    
     if (isRunning && seconds > 0) {
       interval = setInterval(() => {
-        setSeconds((prev) => prev - 1);
+        setSeconds((prev) => {
+          const next = prev - 1;
+          
+          // Haptic Feedback: Short pulses for the last 5 seconds
+          if (next <= 5 && next > 0) {
+            if (typeof navigator !== "undefined" && navigator.vibrate) {
+              navigator.vibrate(200); 
+            }
+          }
+          
+          // Time's up triggers!
+          if (next === 0) {
+            if (typeof navigator !== "undefined" && navigator.vibrate) {
+              navigator.vibrate([500, 200, 500]); // Long, aggressive vibration
+            }
+            if (onTimeUp) onTimeUp(); // Notify the Game Engine
+            setIsRunning(false);
+          }
+          
+          return next;
+        });
       }, 1000);
-    } else if (seconds === 0) {
-      setIsRunning(false);
     }
+
     return () => clearInterval(interval);
-  }, [isRunning, seconds]);
+  }, [isRunning, seconds, onTimeUp]);
 
   const toggleTimer = () => setIsRunning(!isRunning);
   const resetTimer = () => {

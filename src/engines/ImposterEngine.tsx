@@ -2,18 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Info, RotateCcw, UserMinus, UserPlus, Users, Eye, EyeOff } from "lucide-react";
+import { ArrowRight, Info, Eye, EyeOff } from "lucide-react";
 import InstructionsModal from "@/components/InstructionsModal";
 import Timer from "@/components/Timer";
-
-function shuffleArray<T>(array: T[]): T[] {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-  return newArray;
-}
+import GameOverlay from "@/components/GameOverlay";
+import GameSetup from "@/components/GameSetup";
+import GameOver from "@/components/GameOver"; // Assuming game over might be used if they add scores, but not used now in this specific flow
 
 export default function ImposterEngine({ config }: any) {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -73,82 +67,20 @@ export default function ImposterEngine({ config }: any) {
     setViewingIndex(0);
   };
 
-  if (showOverlay) {
-    return (
-      <div className="flex flex-col min-h-[100dvh] items-center justify-center bg-slate-950 p-6 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px] animate-pulse"></div>
-           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-600/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-        <div className="z-10 text-center animate-bounce mb-8 text-6xl">🕵️‍♂️</div>
-        <h1 className="z-10 text-5xl md:text-7xl font-black text-white mb-6 text-center tracking-tight">{config.title}</h1>
-        <div className="z-10 w-24 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
-      </div>
-    );
-  }
+  if (showOverlay) return <GameOverlay title={config.title} themeColor={config.themeColor} logo={config.logo} author={config.author} />;
 
-  if (setupPhase) {
-    return (
-      <div className="flex flex-col min-h-screen bg-slate-950 p-4 pt-12 md:pt-20">
-        <div className="max-w-lg w-full mx-auto flex flex-col gap-8">
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <h1 className="text-4xl font-black text-white">{config.title}</h1>
-            </div>
-            <Link href="/" className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 active:scale-95 transition-all shadow-lg"><ArrowRight className="w-6 h-6 rotate-180" /></Link>
-          </div>
-
-          <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-8 shadow-2xl">
-            <h2 className="text-2xl font-bold text-slate-200 mb-8 flex items-center gap-3">
-              <Users className="w-6 h-6 text-indigo-400" /> إعداد اللاعبين
-            </h2>
-            
-            <div className="space-y-4">
-              {entities.map((ent, idx) => (
-                <div key={ent.id} className="flex items-center gap-4 group">
-                  <span className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 font-bold shrink-0">{idx + 1}</span>
-                  <input
-                    type="text"
-                    value={ent.name}
-                    onChange={(e) => {
-                      const newEnts = [...entities];
-                      newEnts[idx].name = e.target.value;
-                      setEntities(newEnts);
-                    }}
-                    className="flex-1 bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white font-medium focus:outline-none focus:border-indigo-500 transition-all"
-                    placeholder={`اسم اللاعب`}
-                  />
-                  {entities.length > 3 && (
-                    <button onClick={() => setEntities(entities.filter((_, i) => i !== idx))} className="p-4 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-2xl transition-all shrink-0 active:scale-95"><UserMinus className="w-6 h-6" /></button>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <button onClick={() => setEntities([...entities, { id: Date.now().toString(), name: `اللاعب ${entities.length + 1}` }])} className="mt-6 w-full py-5 rounded-2xl border-2 border-dashed border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800/50 transition-all flex items-center justify-center gap-3 font-medium active:scale-95">
-              <UserPlus className="w-6 h-6" /> إضافة المزيد
-            </button>
-
-            {config.hasTimer && config.isTimerCustomizable && (
-              <div className="mt-8 flex flex-col gap-2">
-                <label className="text-slate-400 text-sm font-medium">زمن النقاش (بالثواني)</label>
-                <input 
-                  type="number" 
-                  value={customTimer} 
-                  onChange={(e) => setCustomTimer(Number(e.target.value))} 
-                  className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-indigo-500 transition-all"
-                />
-              </div>
-            )}
-
-            <button onClick={startGame} disabled={entities.length < 3} className="mt-10 w-full py-5 rounded-[1.5rem] text-white font-bold text-xl shadow-2xl active:scale-[0.98] transition-all disabled:opacity-50 disabled:grayscale" style={{ backgroundColor: config.themeColor, boxShadow: `0 10px 25px -5px ${config.themeColor}50` }}>
-              توزيع الأدوار
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (setupPhase) return (
+    <GameSetup 
+      config={config} 
+      entities={entities} 
+      setEntities={setEntities} 
+      customTimer={customTimer} 
+      setCustomTimer={setCustomTimer} 
+      startGame={startGame} 
+      minEntities={3}
+      timerLabel="زمن النقاش (بالثواني)"
+    />
+  );
 
   if (!gameStarted) {
     const activePlayer = entities[viewingIndex];
