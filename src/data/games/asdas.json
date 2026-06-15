@@ -1,0 +1,16 @@
+{
+  "id": "asdas",
+  "title": "asdas",
+  "author": "Karim Bassem",
+  "engineTemplate": "imposter",
+  "mode": "individual",
+  "themeColor": "#ef4444",
+  "logo": "🕵️",
+  "hasTimer": true,
+  "defaultTimerSeconds": 60,
+  "isTimerCustomizable": true,
+  "allowElimination": true,
+  "turnStrategy": "sequential",
+  "instructions": "",
+  "cardsFile": "asdas-cards.json"
+}
