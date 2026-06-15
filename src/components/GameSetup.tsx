@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, UserMinus, UserPlus, Users } from "lucide-react";
+import { ArrowRight, Play, UserMinus, UserPlus, Users, Clock, Info } from "lucide-react";
 import { Entity, GameConfig } from "@/utils/gameUtils";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface GameSetupProps {
   config: GameConfig;
@@ -14,6 +17,7 @@ interface GameSetupProps {
 }
 
 export default function GameSetup({ config, entities, setEntities, customTimer, setCustomTimer, startGame, minEntities = 2, timerLabel = "زمن العداد (بالثواني)" }: GameSetupProps) {
+  const { t } = useLanguage();
   const isStartDisabled = entities.filter(e => e.name.trim() !== "").length < minEntities;
 
   return (
@@ -23,22 +27,29 @@ export default function GameSetup({ config, entities, setEntities, customTimer, 
           <div className="flex flex-col gap-1">
             <h1 className="text-4xl font-black text-white">{config.title}</h1>
             {config.author && (
-              <p className="text-slate-400 text-sm font-medium">تطوير: <span className="text-slate-300 font-bold">{config.author}</span></p>
+              <p className="text-slate-400 text-sm font-medium">{t("developedBy")}: <span className="text-slate-300 font-bold">{config.author}</span></p>
             )}
           </div>
-          <Link href="/" className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 active:scale-95 transition-all shadow-lg"><ArrowRight className="w-6 h-6 rotate-180" /></Link>
+          <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-full transition-all border border-slate-700 hover:border-slate-500 shadow-sm">
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" /> {t("back")}
+          </Link>
         </div>
 
         <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-[2.5rem] p-8 shadow-2xl">
-          <div className="mb-8 p-6 bg-slate-950 rounded-2xl border border-slate-800">
-            <h3 className="text-lg font-bold text-slate-300 mb-3">كيف تلعب؟ (تعليمات اللعبة)</h3>
-            <p className="text-slate-400 leading-relaxed whitespace-pre-line">
-              {config.instructions || "لا توجد تعليمات مخصصة لهذه اللعبة."}
-            </p>
-          </div>
+          {config.instructions && (
+            <div className="mb-8 bg-indigo-950/30 border border-indigo-500/20 rounded-2xl p-6 shadow-inner">
+              <h3 className="text-indigo-400 font-bold mb-3 flex items-center gap-2">
+                <Info className="w-5 h-5" /> {t("howToPlay")}
+              </h3>
+              <p className="text-slate-300 leading-relaxed text-sm whitespace-pre-line">
+                {config.instructions}
+              </p>
+            </div>
+          )}
 
-          <h2 className="text-2xl font-bold text-slate-200 mb-8 flex items-center gap-3">
-            <Users className="w-6 h-6 text-indigo-400" /> إعداد {config.mode === 'individual' ? 'اللاعبين' : 'الفرق'}
+          <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-slate-100">
+            <Users className="w-6 h-6 text-indigo-400" />
+            {t("enterNames")}
           </h2>
           
           <div className="space-y-4">
@@ -54,7 +65,7 @@ export default function GameSetup({ config, entities, setEntities, customTimer, 
                     setEntities(newEnts);
                   }}
                   className="flex-1 bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white font-medium focus:outline-none focus:border-indigo-500 transition-all"
-                  placeholder={`اسم ${config.mode === 'individual' ? 'اللاعب' : 'الفريق'}`}
+                  placeholder={`${t("playerName")} ${idx + 1}`}
                 />
                 {config.mode !== 'two-team' && entities.length > 2 && (
                   <button onClick={() => setEntities(entities.filter((_, i) => i !== idx))} className="p-4 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-2xl transition-all shrink-0 active:scale-95"><UserMinus className="w-6 h-6" /></button>
@@ -64,14 +75,14 @@ export default function GameSetup({ config, entities, setEntities, customTimer, 
           </div>
 
           {config.mode !== 'two-team' && (
-            <button onClick={() => setEntities([...entities, { id: Date.now().toString(), name: `${config.mode === 'individual' ? 'لاعب' : 'فريق'} ${entities.length + 1}`, score: 0, isEliminated: false }])} className="mt-6 w-full py-5 rounded-2xl border-2 border-dashed border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800/50 transition-all flex items-center justify-center gap-3 font-medium active:scale-95">
-              <UserPlus className="w-6 h-6" /> إضافة المزيد
+            <button onClick={() => setEntities([...entities, { id: Date.now().toString(), name: "", score: 0, isEliminated: false }])} className="mt-6 w-full py-4 rounded-2xl border-2 border-dashed border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800/50 transition-all flex items-center justify-center gap-3 font-medium active:scale-95">
+              <UserPlus className="w-6 h-6" /> {t("addPlayer")}
             </button>
           )}
 
           {config.hasTimer && config.isTimerCustomizable && (
-            <div className="mt-8 flex flex-col gap-2">
-              <label className="text-slate-400 text-sm font-medium">{timerLabel}</label>
+            <div className="mt-8 flex flex-col gap-3">
+              <label className="text-slate-400 text-sm font-medium flex items-center gap-2"><Clock className="w-4 h-4" /> {timerLabel}</label>
               <input 
                 type="number" 
                 value={customTimer} 
@@ -87,7 +98,7 @@ export default function GameSetup({ config, entities, setEntities, customTimer, 
             className="mt-10 w-full py-5 rounded-[1.5rem] text-white font-bold text-xl shadow-2xl active:scale-[0.98] transition-all disabled:opacity-50 disabled:grayscale" 
             style={{ backgroundColor: config.themeColor, boxShadow: `0 10px 25px -5px ${config.themeColor}50` }}
           >
-            جاهزين، ابدأ!
+            {t("startReady")}
           </button>
         </div>
       </div>

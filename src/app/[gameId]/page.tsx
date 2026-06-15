@@ -3,7 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import GameDispatcher from "@/engines/GameDispatcher";
 
-export const dynamicParams = false;
+
 
 function getGamesData() {
   const gamesDir = path.join(process.cwd(), "src/data/games");

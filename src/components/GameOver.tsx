@@ -1,5 +1,8 @@
+"use client";
+
 import { RotateCcw } from "lucide-react";
 import { Entity } from "@/utils/gameUtils";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface GameOverProps {
   entities: Entity[];
@@ -9,16 +12,17 @@ interface GameOverProps {
 }
 
 export default function GameOver({ entities, themeColor, restartGame, winnerOnly }: GameOverProps) {
+  const { t } = useLanguage();
   const winner = entities.find(e => !e.isEliminated);
 
   return (
     <div className="text-center w-full bg-slate-900 p-10 rounded-[3rem] border border-slate-800 shadow-2xl relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-2" style={{ backgroundColor: themeColor }}></div>
-      <h2 className="text-5xl font-black text-white mb-8 mt-4">النهاية!</h2>
+      <h2 className="text-5xl font-black text-white mb-8 mt-4">{t("theEnd")}</h2>
       
       {winnerOnly ? (
         <>
-          <p className="text-slate-400 text-xl mb-6">الفائز والناجي هو:</p>
+          <p className="text-slate-400 text-xl mb-6">{t("winnerAndSurvivor")}</p>
           <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 mb-10 shadow-inner">
             <h3 className="text-4xl font-black text-emerald-400 flex items-center justify-center gap-4">
               <span className="text-4xl animate-bounce">🏆</span> {winner?.name}
@@ -32,14 +36,14 @@ export default function GameOver({ entities, themeColor, restartGame, winnerOnly
               <span className="font-bold flex items-center gap-3 text-lg">
                 {idx === 0 && <span className="text-2xl animate-bounce">🏆</span>} {ent.name}
               </span>
-              <span className="text-2xl font-black">{ent.score} <span className="text-sm font-medium opacity-80">نقطة</span></span>
+              <span className="text-2xl font-black">{ent.score} <span className="text-sm font-medium opacity-80">{t("point")}</span></span>
             </div>
           ))}
         </div>
       )}
 
       <button onClick={restartGame} className="w-full py-5 rounded-2xl font-bold text-xl text-white flex items-center justify-center gap-3 shadow-2xl transition-all active:scale-95 hover:brightness-110" style={{ backgroundColor: themeColor }}>
-        <RotateCcw className="w-6 h-6" /> لعب مرة أخرى
+        <RotateCcw className="w-6 h-6" /> {t("playAgain")}
       </button>
     </div>
   );

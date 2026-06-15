@@ -127,7 +127,7 @@ export default function ImposterEngine({ config }: any) {
         <button onClick={() => setShowInstructions(true)} className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
           <Info className="w-4 h-4" /> تعليمات اللعبة
         </button>
-        <Link href="/" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
+        <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
           إنهاء اللعبة <ArrowRight className="w-4 h-4 rotate-180" />
         </Link>
       </header>

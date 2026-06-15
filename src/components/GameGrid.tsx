@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Users, User, UsersRound, Bomb } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function GameGrid({ games }: { games: any[] }) {
+  const { t } = useLanguage();
+
   const renderLogo = (logo: string) => {
     // Check if the logo is a known string, else treat it as an emoji or short string.
     switch (logo) {
@@ -38,10 +43,10 @@ export default function GameGrid({ games }: { games: any[] }) {
           <h2 className="text-2xl font-black text-slate-100 mt-2 tracking-wide group-hover:text-amber-300 transition-colors">{game.title}</h2>
           <div className="flex gap-3 text-xs font-bold">
             <span className="px-4 py-1.5 rounded-full border border-slate-700 bg-slate-950/50 text-amber-100 shadow-inner">
-              {game.hasTimer ? "⏳ مؤقت" : "✨ مفتوح"}
+              {game.hasTimer ? `⏳ ${t("timer")}` : `✨ ${t("noTimer")}`}
             </span>
             <span className="px-4 py-1.5 rounded-full border border-slate-700 bg-slate-950/50 text-amber-100 shadow-inner">
-              {game.allowElimination ? "⚔️ إقصاء" : "🛡️ حماية"}
+              {game.allowElimination ? `⚔️ ${t("elimination")}` : `🛡️ ${t("protection")}`}
             </span>
           </div>
         </Link>

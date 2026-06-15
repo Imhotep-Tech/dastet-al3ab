@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -26,11 +27,9 @@ export default function RootLayout({
       dir="rtl"
       className={`${cairo.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-50 font-cairo overflow-x-hidden selection:bg-indigo-500/30">
-        <div className="fixed top-4 left-4 z-50">
-          <SyncButton />
-        </div>
-        <div className="flex-1 flex flex-col w-full">
+      <body className="min-h-full flex flex-col bg-slate-950 text-slate-50 font-cairo overflow-x-hidden selection:bg-amber-500/30">
+        <LanguageProvider>
+          <div className="flex-1 flex flex-col w-full">
           {children}
         </div>
         <footer className="w-full bg-slate-950 border-t border-slate-900 py-6 mt-auto">
@@ -38,7 +37,8 @@ export default function RootLayout({
             <p className="text-slate-500 text-sm">© 2026 Imhotep Tech. جميع الحقوق محفوظة.</p>
             <SyncButton />
           </div>
-        </footer>
+          </footer>
+        </LanguageProvider>
       </body>
     </html>
   );
