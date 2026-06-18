@@ -54,14 +54,25 @@ export default function McqEngine({ config }: GameProps) {
         <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
         {showAnswer ? (
-          <div className="z-10 flex flex-col gap-6">
+          <div className="z-10 flex flex-col gap-6 w-full">
              <p className="text-xl font-medium text-slate-400 drop-shadow-lg opacity-80">{deck[currentCardIndex]?.question}</p>
              <p className="text-4xl md:text-5xl font-black text-emerald-400 leading-tight drop-shadow-lg">{deck[currentCardIndex]?.answer}</p>
           </div>
         ) : (
-          <p className="text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-lg z-10">
-            {typeof deck[currentCardIndex] === 'string' ? deck[currentCardIndex] : (deck[currentCardIndex]?.question || '')}
-          </p>
+          <div className="z-10 flex flex-col items-center gap-8 w-full">
+            <p className="text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-lg">
+              {typeof deck[currentCardIndex] === 'string' ? deck[currentCardIndex] : (deck[currentCardIndex]?.question || '')}
+            </p>
+            {deck[currentCardIndex]?.options && Array.isArray(deck[currentCardIndex]?.options) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mt-2">
+                {deck[currentCardIndex].options.map((opt: string, i: number) => (
+                  <div key={i} className="bg-slate-800/80 border border-slate-700/50 rounded-xl p-5 text-xl md:text-2xl font-bold text-slate-200 shadow-lg shadow-black/20 text-center flex items-center justify-center">
+                    {opt}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         )}
       </div>
       

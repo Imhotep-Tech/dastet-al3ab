@@ -53,14 +53,14 @@ export default function CreatorDashboard() {
   }, []);
 
   const handleAddCard = () => {
-    if (engineTemplate === 'mcq') setCards([...cards, { question: '', answer: '' }]);
+    if (engineTemplate === 'mcq') setCards([...cards, { question: '', options: ['', '', '', ''], answer: '' }]);
     else if (engineTemplate === 'taboo') setCards([...cards, { word: '', forbidden: '' }]);
     else setCards([...cards, '']);
   };
   const handleRemoveCard = (idx: number) => {
     const newCards = cards.filter((_, i) => i !== idx);
     if (!newCards.length) {
-      if (engineTemplate === 'mcq') setCards([{ question: '', answer: '' }]);
+      if (engineTemplate === 'mcq') setCards([{ question: '', options: ['', '', '', ''], answer: '' }]);
       else if (engineTemplate === 'taboo') setCards([{ word: '', forbidden: '' }]);
       else setCards(['']);
     } else {
@@ -223,7 +223,7 @@ export default function CreatorDashboard() {
                         const selectedGame = gamesList.find(g => g.id === e.target.value);
                         if (selectedGame) {
                           setEngineTemplate(selectedGame.engineTemplate || 'hot-potato');
-                          if (selectedGame.engineTemplate === 'mcq') setCards([{ question: '', answer: '' }]);
+                          if (selectedGame.engineTemplate === 'mcq') setCards([{ question: '', options: ['', '', '', ''], answer: '' }]);
                           else if (selectedGame.engineTemplate === 'taboo') setCards([{ word: '', forbidden: '' }]);
                           else setCards(['']);
                         }
@@ -357,9 +357,10 @@ export default function CreatorDashboard() {
                       <span className="text-slate-500 font-mono w-6 text-center pt-3 sm:pt-0">{idx + 1}</span>
                       
                       {engineTemplate === 'mcq' ? (
-                        <div className="flex-1 flex flex-col sm:flex-row gap-3 w-full">
-                           <input type="text" value={card?.question || ''} onChange={e => handleCardChange(idx, { ...card, question: e.target.value })} className="flex-1 p-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="اكتب السؤال هنا..." required />
-                           <input type="text" value={card?.answer || ''} onChange={e => handleCardChange(idx, { ...card, answer: e.target.value })} className="flex-1 p-3 bg-slate-900 border border-emerald-700/50 rounded-xl text-emerald-100 focus:ring-2 focus:ring-emerald-500 outline-none transition" placeholder="الإجابة الصحيحة..." required />
+                        <div className="flex-1 flex flex-col gap-3 w-full">
+                           <input type="text" value={card?.question || ''} onChange={e => handleCardChange(idx, { ...card, question: e.target.value })} className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="اكتب السؤال هنا..." required />
+                           <input type="text" value={card?.options?.join('، ') || ''} onChange={e => handleCardChange(idx, { ...card, options: e.target.value.split('،').map((s: string) => s.trim()).filter(Boolean) })} className="w-full p-3 bg-slate-900 border border-slate-700/80 rounded-xl text-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none transition" placeholder="الخيارات المتاحة للسؤال (افصل بينها بفاصلة ،)" />
+                           <input type="text" value={card?.answer || ''} onChange={e => handleCardChange(idx, { ...card, answer: e.target.value })} className="w-full p-3 bg-slate-900 border border-emerald-700/50 rounded-xl text-emerald-100 focus:ring-2 focus:ring-emerald-500 outline-none transition" placeholder="الإجابة الصحيحة..." required />
                         </div>
                       ) : engineTemplate === 'taboo' ? (
                         <div className="flex-1 flex flex-col gap-3 w-full">
