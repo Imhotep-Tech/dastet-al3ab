@@ -1,29 +1,29 @@
-# دليل إضافة الألعاب (Contributing Games)
+# Games Contribution Guide (دليل إضافة الألعاب)
 
-يمكنك المساهمة في إضافة ألعاب جديدة إلى منصة **Im7o** إما عن طريق **لوحة تحكم صانع الألعاب** داخل التطبيق، أو يدوياً عبر **Github Pull Request**.
+You can contribute and add new games to the **Im7o** platform either via the **Creator Dashboard** inside the app, or manually via a **Github Pull Request**.
 
-## الطريقة الأولى: من داخل التطبيق (الأسهل) 🚀
+## Method 1: Directly from the platform (Easiest) 🚀
 
-1. سجل دخولك إلى التطبيق عبر حساب Google.
-2. اذهب إلى **"إضافة حزمة ألعاب"**.
-3. قم بملء كافة المعلومات واختيار "نوع المحرك" المناسب.
-4. أضف البطاقات واضغط على "إرسال للحفظ كمقترح".
-5. سيقوم النظام تلقائياً بإنشاء Pull Request للمشرفين لمراجعته وقبوله.
+1. Log into the app via your Google account.
+2. Go to **"إضافة حزمة ألعاب"** (Add Game Pack).
+3. Fill out all the required information and choose the appropriate "Engine Template" (نوع المحرك).
+4. Add the cards and click on submit.
+5. The system will automatically create a Pull Request for the admins to review and merge.
 
 ---
 
-## الطريقة الثانية: إضافة لعبة يدوياً عبر Github 🛠️
+## Method 2: Add a game manually via Github (Highly Recommended!) 🛠️
 
-إذا كنت تفضل كتابة ملفات الـ JSON بنفسك، يمكنك إنشاء طلب سحب (Pull Request) مباشرة على Github.
+If you are a developer and prefer writing JSON files yourself, you can create a Pull Request directly on Github. This gives you 100% control and is processed much faster!
 
-### الخطوة 1: إنشاء ملف إعدادات اللعبة
-في مجلد `src/data/games/`، قم بإنشاء ملف باسم لعبتك (مثال: `my-cool-game.json`):
+### Step 1: Create the game configuration file
+Inside the `src/data/games/` directory, create a file named after your game (e.g. `my-cool-game.json`):
 
 ```json
 {
   "id": "my-cool-game",
-  "title": "لعبتي الرهيبة",
-  "author": "اسمك",
+  "title": "My Awesome Game (لعبتي الرهيبة)",
+  "author": "Your Name",
   "mode": "individual",
   "engineTemplate": "classic",
   "turnStrategy": "open",
@@ -33,50 +33,50 @@
   "defaultTimerSeconds": 30,
   "isTimerCustomizable": true,
   "allowElimination": false,
-  "instructions": "طريقة اللعب هنا...",
+  "instructions": "How to play goes here...",
   "cardsFile": "my-cool-game-cards.json"
 }
 ```
 
-### شرح الخصائص المتاحة في ملف الإعدادات:
+### Configuration Properties Explanation:
 
-- **`id`**: المعرف الفريد للعبة باللغة الإنجليزية، ولا ينبغي أن يحتوي على مسافات (استخدم `-` بدلاً منها).
-- **`title`**: اسم اللعبة الذي سيظهر للاعبين (يمكن أن يكون باللغة العربية).
-- **`author`**: اسم صانع اللعبة أو مطورها.
-- **`mode`**: نمط اللعب. الخيارات المتاحة:
-  - `individual`: فردي (كل شخص يلعب لنفسه).
-  - `multi-team`: فرق متعددة (اللعب بنظام الفرق).
-- **`engineTemplate`**: نوع المحرك المستخدم في اللعبة. الخيارات المتاحة:
-  - `classic`: كلاسيكي دوري (نصوص عادية).
-  - `mcq`: سؤال وجواب (تتطلب بطاقات بتنسيق `question` و `answer`).
-  - `hot-potato`: البطاطس الساخنة (تمرير الهاتف).
-  - `taboo`: كلمات ممنوعة (تتطلب بطاقات بتنسيق `word` و `forbidden`).
-  - `imposter`: الجاسوس (نصوص بأسماء أماكن).
-- **`turnStrategy`**: نظام الإجابة والأدوار (يُستخدم عادة مع المحركات `classic`, `mcq`, `taboo`). الخيارات المتاحة:
-  - `sequential`: بالدور (شخص أو فريق محدد يجيب في دوره).
-  - `open`: مفتوح (السؤال موجه للجميع والأسرع يجيب ويأخذ النقطة).
-- **`themeColor`**: لون السمة الخاص باللعبة بتنسيق HEX (مثال: `#FF5733`).
-- **`logo`**: أيقونة أو شعار اللعبة، يُفضل استخدام إيموجي (مثال: 🔥، 💣).
-- **`hasTimer`**: هل تحتوي اللعبة على عداد للوقت؟ (`true` أو `false`).
-- **`defaultTimerSeconds`**: الوقت الافتراضي بالثواني للدور الواحد (إذا كان `hasTimer` هو `true`).
-- **`isTimerCustomizable`**: هل يُسمح للاعبين بتعديل وقت الدور قبل بدء اللعبة؟ (`true` أو `false`).
-- **`allowElimination`**: تفعيل نظام الإقصاء وخروج اللاعب أو الفريق الخاسر من اللعبة (`true` أو `false`).
-- **`instructions`**: إرشادات وشروط اللعبة التي ستظهر للاعبين قبل البداية.
-- **`cardsFile`**: اسم ملف البطاقات الخاص بهذه اللعبة والذي ستنشئه في مجلد البطاقات (مثال: `my-cool-game-cards.json`).
+- **`id`**: A unique identifier for the game in English without spaces (use `-` instead).
+- **`title`**: The game name that will appear to players (can be in Arabic).
+- **`author`**: The name of the game creator/developer.
+- **`mode`**: Play mode. Options:
+  - `individual`: Individual mode (every person for themselves).
+  - `multi-team`: Multi-team mode (playing in teams).
+- **`engineTemplate`**: The engine type used for the game. Options:
+  - `classic`: Turn-based classic texts.
+  - `mcq`: Question and Answer (requires cards formatted with `question` and `answer`).
+  - `hot-potato`: Pass the phone before it explodes.
+  - `taboo`: Forbidden words (requires cards formatted with `word` and `forbidden`).
+  - `imposter`: Spyfall/Imposter (locations and spies).
+- **`turnStrategy`**: The answering/turn system (usually used with `classic`, `mcq`, `taboo`). Options:
+  - `sequential`: By turn (a specific person or team answers).
+  - `open`: Open format (the question is for everyone, fastest to answer gets the point).
+- **`themeColor`**: The theme color in HEX format (e.g. `#FF5733`).
+- **`logo`**: The game logo/icon, preferably an emoji (e.g. 🔥, 💣).
+- **`hasTimer`**: Does the game have a timer? (`true` or `false`).
+- **`defaultTimerSeconds`**: The default time in seconds for a single turn (if `hasTimer` is `true`).
+- **`isTimerCustomizable`**: Can players change the timer before the game starts? (`true` or `false`).
+- **`allowElimination`**: Enable the elimination system where losing players get kicked out (`true` or `false`).
+- **`instructions`**: The instructions and rules that will appear to players before starting.
+- **`cardsFile`**: The name of the cards file for this game (e.g. `my-cool-game-cards.json`).
 
-### الخطوة 2: إنشاء ملف البطاقات
-في مجلد `src/data/cards/`، قم بإنشاء الملف المطابق لـ `cardsFile` (مثال: `my-cool-game-cards.json`). يختلف التنسيق حسب المحرك المختار:
+### Step 2: Create the cards file
+Inside the `src/data/cards/` directory, create a file matching the `cardsFile` property (e.g. `my-cool-game-cards.json`). The format differs based on the chosen engine:
 
-**إذا كان المحرك Classic أو Hot Potato أو Imposter (مصفوفة نصوص):**
+**If the engine is Classic, Hot Potato, or Imposter (Array of strings):**
 ```json
 [
-  "تحدي 1",
-  "تحدي 2",
-  "المدرسة"
+  "Challenge 1",
+  "Challenge 2",
+  "School"
 ]
 ```
 
-**إذا كان المحرك MCQ (سؤال وجواب):**
+**If the engine is MCQ (Question and Answer):**
 ```json
 [
   {
@@ -86,7 +86,7 @@
 ]
 ```
 
-**إذا كان المحرك Taboo (كلمات ممنوعة):**
+**If the engine is Taboo (Forbidden words):**
 ```json
 [
   {
@@ -96,5 +96,5 @@
 ]
 ```
 
-### الخطوة 3: إنشاء Pull Request
-قم برفع الملفين في نفس الـ Commit، وأنشئ Pull Request ليتم مراجعته ودمجه في اللعبة الرئيسية!
+### Step 3: Create a Pull Request
+Push both files in the same commit, and create a Pull Request to be reviewed and merged into the main platform!

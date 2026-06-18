@@ -1,77 +1,77 @@
-# دليل المساهمة البرمجية (Contributing Code)
+# Code Contribution Guide (دليل المساهمة البرمجية)
 
-شكراً لاهتمامك بالمساهمة في تطوير مشروع **Im7o**! نرحب بكل المساهمات من المطورين سواء كانت إصلاح أخطاء، تحسينات في الأداء، أو إضافة ميزات ومحركات ألعاب جديدة.
+Thank you for your interest in contributing to the **Im7o** project! We welcome all contributions from developers, whether it's bug fixes, performance improvements, or adding new features and game engines.
 
-## 🛠️ إعداد بيئة التطوير (Local Setup)
+## 🛠️ Local Setup (إعداد بيئة التطوير)
 
-لبدء العمل على المشروع محلياً، اتبع الخطوات التالية:
+To start working on the project locally, follow these steps:
 
-1. **نسخ المستودع (Clone)**: قم بنسخ المستودع إلى جهازك المحلي.
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/Imhotep-Tech/im7o.git
    cd im7o
    ```
-2. **تثبيت الحزم (Install Dependencies)**: يتطلب المشروع Node.js.
+2. **Install Dependencies**: The project requires Node.js.
    ```bash
    npm install
    ```
-3. **تشغيل خادم التطوير (Run Dev Server)**:
+3. **Run Dev Server**:
    ```bash
    npm run dev
    ```
-   سيتم تشغيل التطبيق على `http://localhost:3000`.
+   The application will start on `http://localhost:3000`.
 
-## 📂 هيكل المشروع (Project Structure)
+## 📂 Project Structure (هيكل المشروع)
 
-المشروع مبني باستخدام **Next.js (App Router)** و **Tailwind CSS**. الهيكل الأساسي كالتالي:
+The project is built using **Next.js (App Router)** and **Tailwind CSS**. The main structure is as follows:
 
-- `/src/app`: يحتوي على مسارات الصفحات الرئيسية:
-  - `(home)`: واجهة اختيار الألعاب.
-  - `/creator`: لوحة تحكم صانع الألعاب (إرسال الألعاب).
-  - `/admin`: لوحة تحكم الإدارة لمراجعة وقبول الألعاب.
-  - `/game/[id]`: موجه الألعاب الرئيسي (`GameDispatcher`) الذي يعرض المحرك المناسب.
-- `/src/engines`: يحتوي على محركات الألعاب (Engines) المختلفة التي تدير منطق كل نوع من الألعاب (مثل `TurnBasedEngine`، `McqEngine`).
-- `/src/components`: المكونات القابلة لإعادة الاستخدام (مثل `PortalNav`، `Timer`، `InstructionsModal`).
-- `/src/hooks`: الـ Custom Hooks (مثل `useGameEngine` لإدارة حالة اللعبة الموحدة).
-- `/src/utils`: دوال مساعدة عامة (مثل `gameUtils.ts`).
-- `/src/data`: يحتوي على ملفات JSON للألعاب (`games/`) والبطاقات المرفقة (`cards/`).
+- `/src/app`: Contains the main page routes:
+  - `(home)`: The game selection interface.
+  - `/creator`: The Creator Dashboard for submitting games.
+  - `/admin`: The Admin Dashboard to review and approve games.
+  - `/game/[id]`: The main Game Dispatcher (`GameDispatcher`) that renders the appropriate engine.
+- `/src/engines`: Contains the various game Engines that manage the logic for each game type (e.g. `TurnBasedEngine`, `McqEngine`).
+- `/src/components`: Reusable components (e.g. `PortalNav`, `Timer`, `InstructionsModal`).
+- `/src/hooks`: Custom Hooks (e.g. `useGameEngine` to manage unified game states).
+- `/src/utils`: General helper functions (e.g. `gameUtils.ts`).
+- `/src/data`: Contains the JSON files for the games (`games/`) and their attached cards (`cards/`).
 
-## 🚀 إضافة محرك ألعاب جديد (New Engine Template)
+## 🚀 Adding a New Engine Template (إضافة محرك ألعاب جديد)
 
-إذا كانت لديك فكرة لأسلوب لعب جديد كلياً، يمكنك برمجة محرك (Engine) جديد باتباع الخطوات التالية:
+If you have an idea for a completely new gameplay style, you can program a new Engine by following these steps:
 
-1. **إنشاء مكون المحرك**:
-   أنشئ ملفاً جديداً في `src/engines/` (مثال: `MyNewEngine.tsx`). يُفضل أن يعتمد المحرك الجديد على قالب `BaseEngineLayout` إذا كان يتوافق مع التصميم العام، واستخدم `useGameEngine` لإدارة الأدوار والنقاط.
-2. **تسجيل المحرك**:
-   افتح `src/engines/GameDispatcher.tsx` وقم باستيراد المحرك الجديد، ثم أضفه إلى شرط العرض (Switch Case) بناءً على `config.engineTemplate`.
-3. **تحديث واجهة صانع الألعاب (Creator Dashboard)**:
-   أضف القالب الجديد إلى قائمة `engineTemplate` في `src/app/creator/page.tsx`. إذا كان المحرك الجديد يتطلب هيكلة بطاقات مختلفة (مثلاً يتطلب صوراً أو 4 خيارات إجابة بدلاً من 2)، أضف الحقول اللازمة لمعالجة هذا التنسيق في الواجهة.
-4. **تحديث لوحة الإدارة (Admin Dashboard)**:
-   تأكد من أن لوحة الإدارة `src/app/admin/page.tsx` قادرة على استعراض بطاقات المحرك الجديد بوضوح لكي يتمكن المشرفون من مراجعتها قبل القبول.
+1. **Create the Engine Component**:
+   Create a new file in `src/engines/` (e.g. `MyNewEngine.tsx`). It is recommended that the new engine relies on the `BaseEngineLayout` template if it fits the general design, and uses `useGameEngine` to manage turns and scores.
+2. **Register the Engine**:
+   Open `src/engines/GameDispatcher.tsx`, import your new engine, and add it to the Switch Case based on `config.engineTemplate`.
+3. **Update the Creator Dashboard**:
+   Add the new template to the `engineTemplate` list in `src/app/creator/page.tsx`. If the new engine requires a different card structure (e.g. requires images or 4 options instead of 2), add the necessary fields to handle this format in the UI.
+4. **Update the Admin Dashboard**:
+   Ensure that the Admin Dashboard `src/app/admin/page.tsx` is able to clearly review the cards of the new engine so supervisors can inspect them before approval.
 
-## 💻 معايير كتابة الكود (Coding Standards)
+## 💻 Coding Standards (معايير كتابة الكود)
 
-لضمان جودة الكود وسهولة صيانته، نرجو الالتزام بالمعايير التالية:
+To ensure code quality and maintainability, please adhere to the following standards:
 
-- **TypeScript**: استخدم `TypeScript` لكتابة أنواع المتغيرات (Types/Interfaces) بشكل دقيق. تجنب استخدام `any` قدر الإمكان.
-- **التصميم والتنسيق (Styling)**: استخدم **Tailwind CSS** فقط. تجنب كتابة CSS مخصص في ملفات خارجية إلا للضرورة القصوى.
-- **مكونات الواجهة (UI Components)**: اجعل مكونات الواجهة (مثل الأزرار، البطاقات) قابلة لإعادة الاستخدام وضعها في `src/components/`.
-- **فصل المنطق (Separation of Concerns)**: افصل المنطق البرمجي المعقد عن الواجهة الرسومية باستخدام الـ Hooks الموجودة في `src/hooks/` أو دوال المساعدة في `src/utils/`.
+- **TypeScript**: Use `TypeScript` to strictly type your variables (Types/Interfaces). Avoid using `any` as much as possible.
+- **Styling**: Use **Tailwind CSS** exclusively. Avoid writing custom CSS in external files unless absolutely necessary.
+- **UI Components**: Make your UI components (like buttons, cards) reusable and place them in `src/components/`.
+- **Separation of Concerns**: Separate complex logic from the graphical interface using Hooks in `src/hooks/` or helper functions in `src/utils/`.
 
-## 📝 قواعد رسائل الالتزام (Commit Messages)
+## 📝 Commit Messages (قواعد رسائل الالتزام)
 
-نستخدم أسلوب [Conventional Commits](https://www.conventionalcommits.org/) للحفاظ على وضوح التغييرات:
-- `feat: إضافة ميزة جديدة` (مثال: `feat: add new imposter engine`)
-- `fix: إصلاح خطأ` (مثال: `fix: timer not stopping on elimination`)
-- `docs: تحديث الوثائق` (مثال: `docs: update code contribution guidelines`)
-- `style: تنسيق الكود أو تعديلات شكلية` (بدون تغيير في المنطق)
-- `refactor: إعادة هيكلة الكود` (تحسين الكود بدون إضافة ميزات أو إصلاح أخطاء)
+We use [Conventional Commits](https://www.conventionalcommits.org/) to maintain clear changes:
+- `feat: add a new feature` (e.g. `feat: add new imposter engine`)
+- `fix: fix a bug` (e.g. `fix: timer not stopping on elimination`)
+- `docs: update documentation` (e.g. `docs: update code contribution guidelines`)
+- `style: formatting or visual tweaks` (no logic changes)
+- `refactor: code refactoring` (improving code without adding features or fixing bugs)
 
-## 🔄 إرسال التعديلات (Pull Request)
+## 🔄 Pull Request (إرسال التعديلات)
 
-1. تأكد من أن الكود يعمل محلياً بدون أخطاء.
-2. قم بعمل **Fork** للمستودع إذا لم تكن قد فعلت.
-3. أنشئ فرعاً جديداً لتعديلاتك: `git checkout -b feature/my-awesome-feature`
-4. التزم بالتعديلات (Commit) مع مراعاة قواعد الرسائل.
-5. ارفع التعديلات (Push): `git push origin feature/my-awesome-feature`
-6. توجه إلى Github وأنشئ **Pull Request**، واشرح فيه بالتفصيل ما قمت بإضافته أو إصلاحه.
+1. Make sure the code works locally without errors.
+2. **Fork** the repository if you haven't already.
+3. Create a new branch for your feature: `git checkout -b feature/my-awesome-feature`
+4. Commit your changes while following the message rules.
+5. Push the changes: `git push origin feature/my-awesome-feature`
+6. Go to Github and create a **Pull Request**, detailing what you have added or fixed.

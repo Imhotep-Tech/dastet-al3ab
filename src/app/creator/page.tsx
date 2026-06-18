@@ -46,7 +46,7 @@ export default function CreatorDashboard() {
       })
       .catch(() => {});
 
-    fetch('/api/games')
+    fetch('http://localhost:8000/api/creator/games', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setGamesList(data))
       .catch(() => {});
@@ -183,7 +183,25 @@ export default function CreatorDashboard() {
           </div>
         ) : (
           <div className="bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
-            <h2 className="text-2xl font-bold mb-6 text-white">إضافة حزمة ألعاب جديدة</h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+              <h2 className="text-2xl font-bold text-white">إضافة حزمة ألعاب جديدة</h2>
+            </div>
+            
+            <div className="mb-8 bg-slate-950 p-6 rounded-xl border border-slate-800 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full"></div>
+              <h3 className="text-lg font-bold text-indigo-400 mb-2 flex items-center gap-2">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                هل أنت مطور؟ ساهم عبر GitHub!
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                نوصي بشدة بإضافة الألعاب أو البطاقات مباشرة عبر مستودعنا على GitHub إذا كنت تعرف كيف تتعامل مع ملفات JSON والـ Pull Requests. ستتمتع بتحكم كامل بنسبة 100%، وستتم معالجة التعديلات بشكل أسرع بكثير، كما ستحصل على لقب مساهم (Contributor) رسمي في المشروع!
+              </p>
+              <a href="https://github.com/Imhotep-Tech/im7o/tree/main/src/data" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors">
+                اقرأ التوثيق وابدأ المساهمة 
+                <svg className="w-4 h-4 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </a>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-8">
               
               <div className="bg-slate-950 p-6 rounded-xl border border-slate-800 space-y-4">
