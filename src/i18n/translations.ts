@@ -1,7 +1,7 @@
 export const translations = {
   ar: {
     heroTitle: "إيمحو",
-    heroSubtitle: "منصة الألعاب الجماعية الأولى 𓋹",
+    heroSubtitle: "منصة الألعاب الجماعية الأولى",
     heroDesc: "اجمع أصدقاءك، اختر لعبتك المفضلة، وابدأ التحدي فوراً. إيمحو هي منصة مفتوحة المصدر تتيح لأي شخص ابتكار وإضافة ألعاب جديدة بسلاسة تامة.",
     playNow: "العب الآن مجاناً",
     exploreCode: "استكشف الكود (Github)",
@@ -59,7 +59,7 @@ export const translations = {
   },
   en: {
     heroTitle: "Im7o",
-    heroSubtitle: "The Ultimate Party Games Platform 𓋹",
+    heroSubtitle: "The Ultimate Party Games Platform",
     heroDesc: "Gather your friends, pick your favorite game, and start the challenge immediately. Im7o is an open-source platform that allows anyone to create and add new games seamlessly.",
     playNow: "Play Now for Free",
     exploreCode: "Explore Code (Github)",

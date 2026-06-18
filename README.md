@@ -1,4 +1,4 @@
-# Im7o (إيمحو) - The Ultimate Party Games Platform 𓋹
+# Im7o (إيمحو) - The Ultimate Party Games Platform
 
 The **Im7o** platform is an open-source Party Games platform that allows anyone to invent and add their own games.
 The platform acts as a **Custom Git-Backed Serverless App**: Any game added to the GitHub repository automatically becomes available to all players. We have completely eliminated the need for a backend server or database!
