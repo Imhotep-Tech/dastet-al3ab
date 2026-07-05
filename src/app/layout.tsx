@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Dasta (دستة) - لعبة الحفلات",
   description: "منصة دستة المفتوحة المصدر لألعاب الحفلات والتجمعات من تطوير Imhotep Tech",
   manifest: "/manifest.json",
+  verification: {
+    google: "5VWhaKmsV5Wzrdko3_Si5vVnmNsMDttsJFA04mFxrsE",
+  },
 };
 
 import SyncButton from "@/components/SyncButton";
