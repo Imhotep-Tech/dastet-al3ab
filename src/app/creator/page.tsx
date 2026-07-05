@@ -22,7 +22,7 @@ export default function CreatorDashboard() {
       `نوع اللعبة: ${engineType}\n\n` +
       `إرشادات اللعبة:\n${gameInstructions}\n\n` +
       `البطاقات / الأسئلة:\n${cardsContent}\n\n` +
-      `---\nملاحظة للفريق: يرجى مراجعة هذه اللعبة وإضافتها إلى Im7o.`
+      `---\nملاحظة للفريق: يرجى مراجعة هذه اللعبة وإضافتها إلى دستة.`
     );
     window.location.href = `mailto:imhoteptech@outlook.com?subject=${subject}&body=${body}`;
   };
@@ -55,7 +55,7 @@ export default function CreatorDashboard() {
             
             <h2 className="text-3xl font-black text-white mb-6">ساهم عبر GitHub بالخطوات المفصلة</h2>
             <p className="text-slate-300 text-lg leading-relaxed mb-8">
-              لإضافة لعبتك بشكل أسرع والحصول على لقب "مساهم" رسمي، يمكنك إضافة اللعبة مباشرة إلى الكود المصدري عبر GitHub. اتبع هذه الخطوات بالتفصيل:
+              لإضافة لعبتك بشكل أسرع والحصول على لقب 'مساهم' رسمي، يمكنك إضافة اللعبة مباشرة إلى الكود المصدري عبر GitHub. اتبع هذه الخطوات بالتفصيل:
             </p>
             
             <div className="space-y-6 text-right">
@@ -71,7 +71,7 @@ export default function CreatorDashboard() {
               <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
                 <h3 className="text-xl font-bold text-amber-400 mb-3">الخطوة الثانية: رفع التعديلات (Pull Request)</h3>
                 <ul className="list-disc list-inside space-y-2 text-slate-300 leading-relaxed">
-                  <li>قم بإنشاء حساب في GitHub وادخل على مستودع اللعبة: <a href="https://github.com/Imhotep-Tech/im7o" target="_blank" className="text-indigo-400 underline">Imhotep-Tech/im7o</a>.</li>
+                  <li>قم بإنشاء حساب في GitHub وادخل على مستودع اللعبة: <a href="https://github.com/Imhotep-Tech/dasta" target="_blank" className="text-indigo-400 underline">Imhotep-Tech/dasta</a>.</li>
                   <li>اضغط على زر <strong>Fork</strong> لنسخ المشروع إلى حسابك.</li>
                   <li>قم بإضافة ملفاتك في المجلدات المذكورة أعلاه.</li>
                   <li>بعد الانتهاء، اضغط على <strong>Commit changes</strong> ثم افتح <strong>Pull Request</strong>.</li>
@@ -88,7 +88,7 @@ export default function CreatorDashboard() {
             
             <div className="mt-10 flex justify-center">
               <a 
-                href="https://github.com/Imhotep-Tech/im7o" 
+                href="https://github.com/Imhotep-Tech/dasta" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="px-10 py-5 bg-amber-500 text-slate-950 font-black text-xl rounded-xl hover:bg-amber-400 transition-colors flex items-center justify-center gap-3 shadow-[0_0_30px_-5px_rgba(251,191,36,0.4)]"

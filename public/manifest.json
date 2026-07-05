@@ -1,19 +1,19 @@
 {
-  "name": "Im7o - إيمحو",
-  "short_name": "Im7o",
-  "description": "منصة إيمحو المفتوحة المصدر لألعاب الحفلات والتجمعات",
+  "name": "Dasta - دستة",
+  "short_name": "Dasta",
+  "description": "منصة دستة المفتوحة المصدر لألعاب الحفلات والتجمعات",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#020617",
   "icons": [
     {
-      "src": "/im7o.png",
+      "src": "/dasta.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/im7o.png",
+      "src": "/dasta.png",
       "sizes": "512x512",
       "type": "image/png"
     }

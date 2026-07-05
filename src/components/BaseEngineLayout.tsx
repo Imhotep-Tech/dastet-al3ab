@@ -49,13 +49,13 @@ export default function BaseEngineLayout({ config, engineState, children }: Base
   }
 
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-slate-950 overflow-hidden">
-      <header className="sticky top-0 z-10 flex items-center justify-between p-4 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50">
-        <button onClick={() => setShowInstructions(true)} className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
+    <div className="flex flex-col min-h-[100dvh] bg-[#02020f] overflow-hidden">
+      <header className="sticky top-0 z-10 flex items-center justify-between p-4 bg-[#02020f]/80 backdrop-blur-xl border-b border-slate-900">
+        <button onClick={() => setShowInstructions(true)} className="flex items-center gap-2 px-5 py-2.5 bg-[#0d0d21] rounded-full text-slate-300 hover:text-white hover:border-pink-500/50 transition-all font-medium text-sm border border-slate-800 active:scale-95">
           <Info className="w-4 h-4" /> تعليمات اللعبة
         </button>
 
-        <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
+        <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-[#0d0d21] rounded-full text-slate-300 hover:text-white hover:border-pink-500/50 transition-all font-medium text-sm border border-slate-800 active:scale-95">
           رجوع <ArrowRight className="w-4 h-4 rotate-180" />
         </Link>
       </header>
@@ -67,10 +67,10 @@ export default function BaseEngineLayout({ config, engineState, children }: Base
               key={ent.id}
               className={`flex flex-col items-center justify-center px-8 py-4 rounded-3xl border-2 transition-all duration-300 min-w-[140px] ${
                 ent.isEliminated 
-                  ? 'border-slate-800 bg-slate-900/30 opacity-40 grayscale' 
+                  ? 'border-slate-900 bg-[#0d0d21]/30 opacity-40 grayscale' 
                   : (idx === activeEntityIndex && turnStrategy === "sequential")
-                    ? 'border-current shadow-xl scale-110 z-10 bg-slate-900' 
-                    : 'border-slate-800 bg-slate-900 scale-95 opacity-80'
+                    ? 'border-current shadow-xl scale-110 z-10 bg-[#0d0d21]' 
+                    : 'border-slate-900 bg-[#0d0d21] scale-95 opacity-80'
               }`}
               style={{ borderColor: (idx === activeEntityIndex && turnStrategy === "sequential" && !ent.isEliminated) ? config.themeColor : undefined }}
             >

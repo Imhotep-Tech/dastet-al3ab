@@ -20,7 +20,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("im7o_lang") as Language;
+    const savedLang = localStorage.getItem("dasta_lang") as Language;
     if (savedLang && (savedLang === "ar" || savedLang === "en")) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLanguage(savedLang);
@@ -32,7 +32,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     if (mounted) {
       document.documentElement.lang = language;
       document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-      localStorage.setItem("im7o_lang", language);
+      localStorage.setItem("dasta_lang", language);
     }
   }, [language, mounted]);
 

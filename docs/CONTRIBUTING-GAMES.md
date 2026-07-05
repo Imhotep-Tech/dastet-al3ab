@@ -1,6 +1,6 @@
 # Games Contribution Guide (دليل إضافة الألعاب)
 
-You can contribute and add new games to the **Im7o** platform either via a **Github Pull Request** (highly recommended) or by submitting a formatted **Email** through our Creator Dashboard.
+You can contribute and add new games to the **Dasta** platform either via a **Github Pull Request** (highly recommended) or by submitting a formatted **Email** through our Creator Dashboard.
 
 ## Method 1: Add a game manually via Github (Highly Recommended!) 🛠️
 
@@ -95,7 +95,7 @@ Push both files in the same commit, and create a Pull Request to be reviewed and
 ## Method 2: Submitting via Email 📧
 
 If you do not want to use GitHub, you can use our Creator Dashboard in the app.
-1. Open the Im7o app and click on **Add Game** (or navigate to `/creator`).
+1. Open the Dasta app and click on **Add Game** (or navigate to `/creator`).
 2. Select the **Email Submission Tab**.
 3. Fill in the form with your game's details and cards.
 4. Click Submit. This will automatically format your game correctly and open your default email client so you can send it to us for manual addition!

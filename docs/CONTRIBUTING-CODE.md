@@ -1,6 +1,6 @@
 # Code Contribution Guide (دليل المساهمة البرمجية)
 
-Thank you for your interest in contributing to the **Im7o** project! We welcome all contributions from developers, whether it's bug fixes, performance improvements, or adding new features and game engines.
+Thank you for your interest in contributing to the **Dasta** project! We welcome all contributions from developers, whether it's bug fixes, performance improvements, or adding new features and game engines.
 
 ## 🛠️ Local Setup (إعداد بيئة التطوير)
 
@@ -8,8 +8,8 @@ To start working on the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Imhotep-Tech/im7o.git
-   cd im7o
+   git clone https://github.com/Imhotep-Tech/dasta.git
+   cd dasta
    ```
 2. **Install Dependencies**: The project requires Node.js.
    ```bash

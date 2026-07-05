@@ -9,8 +9,8 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Im7o (إيمحو) - لعبة الحفلات",
-  description: "منصة إيمحو المفتوحة المصدر لألعاب الحفلات والتجمعات من تطوير Imhotep Tech",
+  title: "Dasta (دستة) - لعبة الحفلات",
+  description: "منصة دستة المفتوحة المصدر لألعاب الحفلات والتجمعات من تطوير Imhotep Tech",
   manifest: "/manifest.json",
 };
 
