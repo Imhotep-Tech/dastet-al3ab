@@ -1,6 +1,6 @@
-# Dasta (دستة) - The Ultimate Egyptian Summer Party Games Bundle 🏖️🎮
+# Dastet Al3ab - The Ultimate Egyptian Summer Party Games Bundle 🏖️🎮
 
-**Dasta (دستة)** is the ultimate, offline-first party game platform designed to save your Egyptian summer trips, Sahel hangouts, and beach nights! It is a Progressive Web App (PWA) that houses a diverse collection of card games, trivia, forbidden words, and social challenges—all running fully client-side on your phone with zero internet required once installed.
+**Dastet Al3ab** is the ultimate, offline-first party game platform designed to save your Egyptian summer trips, Sahel hangouts, and beach nights! It is a Progressive Web App (PWA) that houses a diverse collection of card games, trivia, forbidden words, and social challenges—all running fully client-side on your phone with zero internet required once installed.
 
 The platform is designed as a **Git-Backed Serverless App**: games and decks are defined as simple JSON files. Adding a new game instantly makes it available to all players worldwide without needing database setups or backend servers.
 
@@ -9,7 +9,7 @@ The platform is designed as a **Git-Backed Serverless App**: games and decks are
 ## 🌟 Key Features
 
 - **Offline-First PWA (العمل دون اتصال)**: Fully supports service-worker caching. You can install it on your phone's home screen and play in remote beach camps, summer homes, or road trips without cellular connection.
-- **Vibrant Arcade UI (هوية بصرية بنكهة الصيف والملاهي)**: Styled with a premium dark-midnight backdrop coupled with a "Neon Night" palette featuring Electric Yellow, Hot Pink, and Cyan accents.
+- **Minimalist & Calm UI (هوية بصرية هادئة وبسيطة)**: Styled with a sleek, monochromatic slate-950 backdrop, high-contrast typography, and a single elegant accent color for primary actions, keeping the gameplay relaxed, readable, and easy on the eyes.
 - **Arabic & English Support**: Switch languages at runtime with full RTL/LTR support.
 - **Zero-Cost Scaling**: Since there is no database server, the entire application compiles to static assets reading raw JSON files directly, keeping hosting costs at absolute zero.
 
@@ -58,9 +58,9 @@ If you want to build a completely new game engine, you don't need to write setup
      return (
        <BaseEngineLayout config={config} engineState={engineState}>
          {/* Your Custom Game Card UI Here */}
-         <div className="bg-[#0d0d21] border border-cyan-400 p-8 rounded-3xl text-center">
+         <div className="bg-slate-900 border border-slate-800 p-8 rounded-3xl text-center">
            <h2 className="text-2xl font-black mb-4">{currentCard.question}</h2>
-           <button onClick={engineState.handleCorrect} className="bg-yellow-500 text-slate-950 font-bold px-6 py-2 rounded-xl">
+           <button onClick={engineState.handleCorrect} className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2 rounded-xl">
              إجابة صحيحة
            </button>
          </div>
@@ -74,10 +74,10 @@ If you want to build a completely new game engine, you don't need to write setup
 
 ## 🤝 How to Contribute Content (إضافة ألعاب جديدة)
 
-You can add new games or card decks to the **Dasta** package in two ways:
+You can add new games or card decks to the **Dastet Al3ab** package in two ways:
 
 ### 1. Via GitHub Pull Requests (Highly Recommended!)
-1. Fork the repository [Imhotep-Tech/dasta](https://github.com/Imhotep-Tech/dasta).
+1. Fork the repository [Imhotep-Tech/dastet-al3ab](https://github.com/Imhotep-Tech/dastet-al3ab).
 2. Add your game settings configuration under `src/data/games/` (e.g., `my-game.json`).
 3. Add your questions or game cards list under `src/data/cards/` (e.g., `my-game-cards.json`).
 4. Commit and submit a PR to be merged!

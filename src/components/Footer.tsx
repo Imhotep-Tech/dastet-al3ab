@@ -1,18 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { History, Globe2 } from "lucide-react";
+import { Globe2, History } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Footer() {
-  const { t, toggleLanguage, language } = useLanguage();
+  const { t, toggleLanguage } = useLanguage();
 
   return (
     <footer className="w-full py-8 mt-auto px-4 border-t border-slate-900 bg-slate-950/80 backdrop-blur-md">
       <div className="max-w-md mx-auto flex flex-col items-center gap-6">
         <div className="flex items-center justify-center gap-6">
           <a
-            href="https://github.com/imhotep-tech/dasta"
+            href="https://github.com/Imhotep-Tech/dastet-al3ab"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
@@ -33,17 +33,17 @@ export default function Footer() {
             <span>{t("footerOpenSource")}</span>
           </a>
           
-          <div className="w-px h-4 bg-slate-800"></div>
+          <div className="w-px h-4 bg-slate-850"></div>
           
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-2 text-slate-400 hover:text-pink-500 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 text-slate-400 hover:text-brand-bronze transition-colors text-sm font-medium cursor-pointer"
           >
             <Globe2 className="w-5 h-5" />
             <span>{t("language")}</span>
           </button>
 
-          <div className="w-px h-4 bg-slate-800"></div>
+          <div className="w-px h-4 bg-slate-850"></div>
           
           <Link
             href="/updates"
@@ -58,9 +58,9 @@ export default function Footer() {
           href="https://imhoteptech.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-500 hover:text-pink-500 transition-colors text-sm text-center px-4"
+          className="text-slate-500 hover:text-brand-bronze transition-colors text-sm text-center px-4"
         >
-          {t("footerCopyright")} <span className="font-bold text-slate-300">Imhotep Tech</span>
+          {t("footerCopyright")} <span className="font-bold text-slate-350 hover:text-slate-200">Imhotep Tech</span>
         </a>
       </div>
     </footer>

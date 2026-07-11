@@ -24,28 +24,27 @@ export default function GameGrid({ games }: { games: any[] }) {
         <Link
           key={game.id}
           href={`/${game.id}`}
-          className="group relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 p-6 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl animate-in fade-in slide-in-from-bottom-8"
-          style={{ animationDelay: `${index * 100}ms`, boxShadow: `0 4px 20px -5px ${game.themeColor}30` }}
+          className="group relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 p-6 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:-translate-y-1 hover:border-brand-bronze/30 shadow-md animate-in fade-in slide-in-from-bottom-8 cursor-pointer"
+          style={{ animationDelay: `${index * 100}ms` }}
         >
           {/* Subtle geometric background pattern inside card */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 120%, rgba(6,182,212,0.2) 0%, transparent 60%)' }}></div>
+          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 120%, rgba(196,139,108,0.03) 0%, transparent 60%)' }}></div>
           <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-            style={{ backgroundColor: game.themeColor }}
+            className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 bg-brand-maroon"
           />
           <div 
-            className="relative w-20 h-20 rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
-            style={{ backgroundColor: game.themeColor, boxShadow: `0 0 30px -5px ${game.themeColor}` }}
+            className="relative w-20 h-20 rounded-full flex items-center justify-center text-white transition-transform duration-500 group-hover:scale-105"
+            style={{ backgroundColor: game.themeColor }}
           >
-            <div className="absolute inset-0 border-[3px] border-cyan-400/25 rounded-full scale-110"></div>
+            <div className="absolute inset-0 border-[3px] border-slate-700/30 rounded-full scale-110"></div>
             {renderLogo(game.logo)}
           </div>
-          <h2 className="text-2xl font-black text-slate-100 mt-2 tracking-wide group-hover:text-yellow-400 transition-colors">{game.title}</h2>
+          <h2 className="text-2xl font-black text-slate-100 mt-2 tracking-wide group-hover:text-brand-bronze transition-colors">{game.title}</h2>
           <div className="flex gap-3 text-xs font-bold">
-            <span className="px-4 py-1.5 rounded-full border border-slate-700 bg-slate-950/50 text-cyan-100 shadow-inner">
+            <span className="px-4 py-1.5 rounded-full border border-slate-800 bg-slate-950/50 text-slate-350">
               {game.hasTimer ? `⏳ ${t("timer")}` : `✨ ${t("noTimer")}`}
             </span>
-            <span className="px-4 py-1.5 rounded-full border border-slate-700 bg-slate-950/50 text-cyan-100 shadow-inner">
+            <span className="px-4 py-1.5 rounded-full border border-slate-800 bg-slate-950/50 text-slate-350">
               {game.allowElimination ? `⚔️ ${t("elimination")}` : `🛡️ ${t("protection")}`}
             </span>
           </div>

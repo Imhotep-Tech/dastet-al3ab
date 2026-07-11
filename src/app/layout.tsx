@@ -9,8 +9,8 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Dasta (دستة) - لعبة الحفلات",
-  description: "منصة دستة المفتوحة المصدر لألعاب الحفلات والتجمعات من تطوير Imhotep Tech",
+  title: "Dastet Al3ab - لعبة الحفلات",
+  description: "منصة Dastet Al3ab المفتوحة المصدر لألعاب الحفلات والتجمعات من تطوير Imhotep Tech",
   manifest: "/manifest.json",
   verification: {
     google: "5VWhaKmsV5Wzrdko3_Si5vVnmNsMDttsJFA04mFxrsE",
@@ -31,7 +31,7 @@ export default function RootLayout({
       dir="rtl"
       className={`${cairo.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#02020f] text-slate-50 font-cairo overflow-x-hidden selection:bg-pink-500/30">
+      <body className="min-h-full flex flex-col bg-[#02020f] text-slate-50 font-cairo overflow-x-hidden selection:bg-indigo-500/30">
         <LanguageProvider>
           <div className="flex-1 flex flex-col w-full">
           {children}

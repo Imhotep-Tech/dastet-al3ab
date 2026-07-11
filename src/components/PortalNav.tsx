@@ -1,20 +1,25 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
+import Link from "next/link";
+import { Plus } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function PortalNav() {
+  const { t } = useLanguage();
+
   return (
-    <nav className="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 p-4 flex justify-between items-center w-full sticky top-0 z-50">
-      <div className="flex items-center space-x-4 space-x-reverse">
-        <Link href="/">
-           <img src="/dasta.png" alt="Dasta Logo" className="h-10 cursor-pointer animate-pulse" />
-        </Link>
-        <span className="text-xl font-black bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">Dasta Games</span>
-      </div>
-      <div className="flex items-center space-x-4 space-x-reverse">
-         <Link href="/play" className="px-5 py-2 bg-yellow-500 text-slate-950 rounded-xl hover:shadow-yellow-500/25 hover:shadow-lg font-bold transition-all text-sm active:scale-95">ابدأ اللعب</Link>
-      </div>
+    <nav className="sticky top-0 z-40 w-full py-4 px-6 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md flex items-center justify-between">
+      <Link href="/play" className="flex items-center gap-3">
+        <img src="/dasta.png" alt="Dastet Al3ab Logo" className="h-14 w-auto object-contain cursor-pointer" />
+      </Link>
+
+      <Link
+        href="/creator"
+        className="flex items-center gap-2 px-5 py-2.5 bg-brand-maroon hover:bg-brand-maroon-hover text-brand-cream border border-brand-bronze/30 rounded-full font-bold text-sm shadow-md transition-all active:scale-95 cursor-pointer"
+      >
+        <Plus className="w-4 h-4" />
+        <span>{t("navAddGame")}</span>
+      </Link>
     </nav>
   );
 }

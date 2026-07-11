@@ -7,7 +7,6 @@ import InstructionsModal from "@/components/InstructionsModal";
 import Timer from "@/components/Timer";
 import GameOverlay from "@/components/GameOverlay";
 import GameSetup from "@/components/GameSetup";
-import GameOver from "@/components/GameOver"; // Assuming game over might be used if they add scores, but not used now in this specific flow
 import { GameProps } from "@/utils/gameUtils";
 
 export default function ImposterEngine({ config }: GameProps) {
@@ -86,13 +85,13 @@ export default function ImposterEngine({ config }: GameProps) {
     const activePlayer = entities[viewingIndex];
     return (
       <div className="flex flex-col min-h-screen bg-slate-950 p-6 items-center justify-center">
-        <div className="max-w-md w-full bg-slate-900 p-10 rounded-[3rem] border border-slate-800 shadow-2xl text-center">
+        <div className="max-w-md w-full bg-slate-900 p-10 rounded-[3rem] border border-slate-800 shadow-md text-center">
           {!isRevealed ? (
             <>
               <EyeOff className="w-16 h-16 text-slate-500 mx-auto mb-6" />
               <p className="text-slate-400 font-medium mb-2">قم بتمرير الهاتف إلى:</p>
               <h2 className="text-4xl font-black text-white mb-10">{activePlayer.name}</h2>
-              <button onClick={() => setIsRevealed(true)} className="w-full py-5 rounded-2xl font-bold text-xl text-white shadow-xl active:scale-95 transition-all" style={{ backgroundColor: config.themeColor }}>
+              <button onClick={() => setIsRevealed(true)} className="w-full py-5 bg-brand-maroon hover:bg-brand-maroon-hover text-brand-cream border border-brand-bronze/20 font-bold text-xl rounded-2xl shadow-sm active:scale-95 transition-all cursor-pointer">
                 أنا {activePlayer.name}، اكشف بطاقتي
               </button>
             </>
@@ -102,16 +101,16 @@ export default function ImposterEngine({ config }: GameProps) {
               <p className="text-slate-400 font-medium mb-2">أنت:</p>
               {activePlayer.id === spyId ? (
                 <div className="mb-10">
-                  <h2 className="text-5xl font-black text-rose-500 mb-2 drop-shadow-lg">الجاسوس!</h2>
+                  <h2 className="text-5xl font-black text-rose-500 mb-2">الجاسوس!</h2>
                   <p className="text-rose-400/80 font-medium text-sm mt-4">لا تدعهم يكتشفون هويتك. حاول معرفة المكان من أسئلتهم!</p>
                 </div>
               ) : (
                 <div className="mb-10">
-                  <h2 className="text-4xl font-black text-indigo-400 mb-2">{secretWord}</h2>
-                  <p className="text-indigo-400/80 font-medium text-sm mt-4">اسأل أسئلة لا يعرف إجابتها سوى من هو في هذا المكان.</p>
+                  <h2 className="text-4xl font-black text-brand-bronze mb-2">{secretWord}</h2>
+                  <p className="text-brand-bronze/80 font-medium text-sm mt-4">اسأل أسئلة لا يعرف إجابتها سوى من هو في هذا المكان.</p>
                 </div>
               )}
-              <button onClick={nextViewer} className="w-full py-5 rounded-2xl bg-slate-800 text-white font-bold text-xl shadow-xl active:scale-95 transition-all hover:bg-slate-700">
+              <button onClick={nextViewer} className="w-full py-5 rounded-2xl bg-slate-800 text-white font-bold text-xl shadow-sm active:scale-95 transition-all hover:bg-slate-700 cursor-pointer">
                 أخفِ البطاقة ومرر الهاتف
               </button>
             </>
@@ -124,16 +123,16 @@ export default function ImposterEngine({ config }: GameProps) {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-slate-950 overflow-hidden relative">
       <header className="sticky top-0 z-10 flex items-center justify-between p-4 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50">
-        <button onClick={() => setShowInstructions(true)} className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
+        <button onClick={() => setShowInstructions(true)} className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95 cursor-pointer">
           <Info className="w-4 h-4" /> تعليمات اللعبة
         </button>
-        <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95">
+        <Link href="/play" className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 rounded-full text-slate-300 hover:text-white transition-all font-medium text-sm border border-slate-800 active:scale-95 cursor-pointer">
           إنهاء اللعبة <ArrowRight className="w-4 h-4 rotate-180" />
         </Link>
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center p-6 gap-6 w-full max-w-md mx-auto text-center">
-        <h2 className="text-3xl font-black text-white drop-shadow-md">مرحلة التحقيق والاستجواب!</h2>
+        <h2 className="text-3xl font-black text-white">مرحلة التحقيق والاستجواب!</h2>
         <p className="text-slate-400">ابدأوا بطرح الأسئلة لبعضكم البعض لاكتشاف الجاسوس.</p>
         
         {config.hasTimer && (
@@ -143,7 +142,7 @@ export default function ImposterEngine({ config }: GameProps) {
         )}
 
         <div className="w-full mt-auto">
-          <button onClick={restartGame} className="w-full py-5 rounded-3xl font-bold text-xl text-white shadow-2xl active:scale-95 transition-all" style={{ backgroundColor: config.themeColor }}>
+          <button onClick={restartGame} className="w-full py-5 bg-brand-maroon hover:bg-brand-maroon-hover text-brand-cream border border-brand-bronze/20 font-bold text-xl rounded-3xl shadow-md active:scale-95 transition-all cursor-pointer">
             كشف الجاسوس ولعب دور جديد!
           </button>
         </div>

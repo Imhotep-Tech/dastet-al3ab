@@ -2,6 +2,10 @@
 
 @theme {
   --font-cairo: var(--font-cairo), sans-serif;
+  --color-brand-maroon: #801c27;
+  --color-brand-maroon-hover: #962632;
+  --color-brand-bronze: #c98a68;
+  --color-brand-cream: #f7f4eb;
 }
 
 @layer base {
@@ -9,11 +13,8 @@
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    background-color: #02020f; /* Deep midnight */
-    background-image: 
-      radial-gradient(circle at 50% -20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 50% 120%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L65 70 L15 70 Z M40 20 L40 70' fill='none' stroke='%2306b6d4' stroke-opacity='0.025' stroke-width='1'/%3E%3C/svg%3E");
+    background-color: #0d0b0a; /* Deep warm dark charcoal */
+    background-image: radial-gradient(circle at 50% 0%, #1c1512 0%, #0d0b0a 100%);
     background-attachment: fixed;
   }
 }

@@ -26,13 +26,13 @@ export default function TurnBasedEngine({ config }: GameProps) {
     <BaseEngineLayout config={config} engineState={engineState}>
       <div className="text-center">
         {turnStrategy === "open" ? (
-          <h2 className="text-3xl font-black text-white drop-shadow-md mb-2" style={{ color: config.themeColor }}>
+          <h2 className="text-3xl font-black text-white mb-2" style={{ color: config.themeColor }}>
             سؤال مفتوح للجميع
           </h2>
         ) : (
           <>
             <span className="text-slate-500 font-medium text-sm mb-2 block uppercase tracking-widest">الدور على</span>
-            <h2 className="text-4xl font-black text-white drop-shadow-md" style={{ color: config.themeColor }}>
+            <h2 className="text-4xl font-black text-white" style={{ color: config.themeColor }}>
               {activeEntity?.name}
             </h2>
           </>
@@ -40,12 +40,11 @@ export default function TurnBasedEngine({ config }: GameProps) {
       </div>
 
       <div 
-        className="w-full bg-slate-900 border-2 rounded-[3rem] p-10 min-h-[300px] flex items-center justify-center text-center shadow-2xl relative overflow-hidden group"
-        style={{ borderColor: `${config.themeColor}40`, boxShadow: `0 25px 50px -12px ${config.themeColor}20` }}
+        className="w-full bg-slate-900 border border-slate-800 rounded-[3rem] p-10 min-h-[300px] flex items-center justify-center text-center shadow-lg relative overflow-hidden group"
       >
-        <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
-        <p className="text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-lg z-10">
+        <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-105 transition-transform duration-700"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform duration-700"></div>
+        <p className="text-3xl md:text-4xl font-bold text-white leading-tight z-10">
           {typeof deck[currentCardIndex] === 'string' ? deck[currentCardIndex] : (deck[currentCardIndex]?.question || '')}
         </p>
       </div>
@@ -62,8 +61,7 @@ export default function TurnBasedEngine({ config }: GameProps) {
               <button
                 key={ent.id}
                 onClick={() => handleOpenScore(idx)}
-                className="py-4 rounded-xl text-white font-bold text-lg shadow-md active:scale-95 transition-all"
-                style={{ backgroundColor: config.themeColor }}
+                className="py-4 rounded-xl bg-brand-maroon hover:bg-brand-maroon-hover text-brand-cream border border-brand-bronze/20 font-bold text-lg shadow-sm active:scale-95 transition-all cursor-pointer"
               >
                 {ent.name} (+1)
               </button>
@@ -71,7 +69,7 @@ export default function TurnBasedEngine({ config }: GameProps) {
           </div>
           <button
             onClick={skipCard}
-            className="w-full py-4 rounded-xl bg-slate-800 text-slate-300 font-bold text-lg active:scale-95 transition-all"
+            className="w-full py-4 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 font-bold text-lg active:scale-95 transition-all cursor-pointer"
           >
             لا أحد (تخطي السؤال)
           </button>
@@ -79,16 +77,16 @@ export default function TurnBasedEngine({ config }: GameProps) {
       ) : (
         <div className="w-full flex flex-col gap-3 mt-auto md:mt-0">
           <div className="w-full flex gap-4">
-            <button onClick={() => handleScore(0)} className="flex-1 py-5 rounded-2xl bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-800 font-bold text-2xl border-b-4 border-slate-950 active:border-b-0 active:translate-y-1 transition-all">
+            <button onClick={() => handleScore(0)} className="flex-1 py-5 rounded-2xl bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white font-bold text-2xl active:translate-y-0.5 transition-all cursor-pointer">
               غلط / 0
             </button>
-            <button onClick={() => handleScore(1)} className="flex-1 py-5 rounded-2xl text-white font-bold text-2xl border-b-4 shadow-xl active:border-b-0 active:translate-y-1 transition-all" style={{ backgroundColor: config.themeColor, borderColor: '#00000050', boxShadow: `0 12px 24px -6px ${config.themeColor}40` }}>
+            <button onClick={() => handleScore(1)} className="flex-1 py-5 rounded-2xl bg-brand-maroon hover:bg-brand-maroon-hover text-brand-cream border border-brand-bronze/20 font-bold text-2xl active:translate-y-0.5 transition-all shadow-md cursor-pointer">
               كسب / +1
             </button>
           </div>
           
           {config.allowPass && (
-            <button onClick={passTurn} className="w-full py-4 rounded-2xl bg-slate-800 border border-slate-700 text-slate-300 font-bold text-lg active:scale-95 transition-all mt-2">
+            <button onClick={passTurn} className="w-full py-4 rounded-2xl bg-slate-800 border border-slate-700/80 hover:bg-slate-750 text-slate-300 font-bold text-lg active:scale-95 transition-all mt-2 cursor-pointer">
               مرر السؤال للي بعده ➡️
             </button>
           )}
@@ -96,7 +94,7 @@ export default function TurnBasedEngine({ config }: GameProps) {
       )}
 
       {config.allowElimination && turnStrategy !== "open" && (
-        <button onClick={eliminateActive} className="w-full py-4 rounded-2xl bg-slate-900 text-red-500 hover:bg-red-500 hover:text-white font-bold text-lg border border-red-500/30 hover:border-red-500 transition-all active:scale-95 mt-2">
+        <button onClick={eliminateActive} className="w-full py-4 rounded-2xl bg-slate-900 text-red-500 hover:bg-red-600 hover:text-white font-bold text-lg border border-red-500/30 hover:border-red-500 transition-all active:scale-95 mt-2 cursor-pointer">
           خروج من اللعبة (إقصاء)
         </button>
       )}

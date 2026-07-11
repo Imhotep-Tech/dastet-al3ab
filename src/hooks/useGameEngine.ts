@@ -98,6 +98,10 @@ export function useGameEngine(config: GameConfig) {
     setCurrentCardIndex(prev => prev + 1);
   };
 
+  const finishGame = () => {
+    setCurrentCardIndex(deck.length);
+  };
+
   const activeTeamsCount = entities.filter(e => !e.isEliminated).length;
   const isGameOver = currentCardIndex >= deck.length || activeTeamsCount <= 1;
   const activeEntity = entities[activeEntityIndex];
@@ -125,6 +129,7 @@ export function useGameEngine(config: GameConfig) {
     eliminateActive,
     nextTurn,
     isGameOver,
-    activeTeamsCount
+    activeTeamsCount,
+    finishGame
   };
 }
