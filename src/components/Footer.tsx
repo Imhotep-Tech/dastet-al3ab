@@ -8,9 +8,11 @@ export default function Footer() {
   const { t, toggleLanguage } = useLanguage();
 
   return (
-    <footer className="w-full py-8 mt-auto px-4 border-t border-slate-900 bg-slate-950/80 backdrop-blur-md">
-      <div className="max-w-md mx-auto flex flex-col items-center gap-6">
-        <div className="flex items-center justify-center gap-6">
+    <footer className="w-full py-6 mt-auto px-4 border-t border-slate-900 bg-slate-950/80 backdrop-blur-md overflow-x-auto">
+      <div className="max-w-md mx-auto flex flex-col items-center gap-5">
+
+        {/* Links — column on mobile, row on sm+ */}
+        <nav className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
           <a
             href="https://github.com/Imhotep-Tech/dastet-al3ab"
             target="_blank"
@@ -32,9 +34,10 @@ export default function Footer() {
             </svg>
             <span>{t("footerOpenSource")}</span>
           </a>
-          
-          <div className="w-px h-4 bg-slate-850"></div>
-          
+
+          {/* Divider — hidden on mobile */}
+          <div className="hidden sm:block w-px h-4 bg-slate-700" aria-hidden="true" />
+
           <button
             onClick={toggleLanguage}
             className="flex items-center gap-2 text-slate-400 hover:text-brand-bronze transition-colors text-sm font-medium cursor-pointer"
@@ -43,8 +46,9 @@ export default function Footer() {
             <span>{t("language")}</span>
           </button>
 
-          <div className="w-px h-4 bg-slate-850"></div>
-          
+          {/* Divider — hidden on mobile */}
+          <div className="hidden sm:block w-px h-4 bg-slate-700" aria-hidden="true" />
+
           <Link
             href="/updates"
             className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
@@ -53,8 +57,9 @@ export default function Footer() {
             <span>{t("footerChangelog")}</span>
           </Link>
 
-          <div className="w-px h-4 bg-slate-850"></div>
-          
+          {/* Divider — hidden on mobile */}
+          <div className="hidden sm:block w-px h-4 bg-slate-700" aria-hidden="true" />
+
           <button
             onClick={() => window.dispatchEvent(new Event('trigger-install'))}
             className="flex items-center gap-2 text-slate-400 hover:text-brand-bronze transition-colors text-sm font-medium cursor-pointer"
@@ -62,7 +67,7 @@ export default function Footer() {
             <Download className="w-5 h-5" />
             <span>{t("footerDownload")}</span>
           </button>
-        </div>
+        </nav>
 
         <a
           href="https://imhoteptech.vercel.app/"
@@ -70,7 +75,8 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-brand-bronze transition-colors text-sm text-center px-4"
         >
-          {t("footerCopyright")} <span className="font-bold text-slate-350 hover:text-slate-200">Imhotep Tech</span>
+          {t("footerCopyright")}{" "}
+          <span className="font-bold text-slate-350 hover:text-slate-200">Imhotep Tech</span>
         </a>
       </div>
     </footer>
