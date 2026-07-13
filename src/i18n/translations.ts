@@ -59,7 +59,13 @@ export const translations = {
     installTitle: "نزّل الأبلكيشن",
     installDesc: "تقدر تثبت Dastet Al3ab على موبايلك عشان تلعب في أي وقت ومن غير نت!",
     installButton: "تثبيت",
-    navAddGame: "+ اعمل لعبة"
+    navAddGame: "+ اعمل لعبة",
+    installUnsupported: "للحصول على أفضل تجربة وتنزيل التطبيق، يرجى استخدام متصفح Chrome أو أي متصفح مبني على Chromium.",
+    installIOS: "تثبيت على iOS",
+    installIOSStep1: "1. اضغط على زر المشاركة",
+    installIOSStep2: "2. اختر 'إضافة إلى الشاشة الرئيسية' (Add to Home Screen)",
+    installIOSStep3: "3. اضغط على 'إضافة' (Add)",
+    footerDownload: "تنزيل التطبيق"
   },
   en: {
     heroTitle: "Dastet Al3ab",
@@ -121,7 +127,13 @@ export const translations = {
     installTitle: "Install App",
     installDesc: "Install Dastet Al3ab on your home screen for quick and offline access!",
     installButton: "Install",
-    navAddGame: "+ Add Game"
+    navAddGame: "+ Add Game",
+    installUnsupported: "For the best experience and to download the app, please use Chrome or a Chromium-based browser.",
+    installIOS: "Install on iOS",
+    installIOSStep1: "1. Tap the Share button",
+    installIOSStep2: "2. Tap 'Add to Home Screen'",
+    installIOSStep3: "3. Tap 'Add'",
+    footerDownload: "Download App"
   }
 };
 

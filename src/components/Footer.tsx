@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Globe2, History } from "lucide-react";
+import { Globe2, History, Download } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Footer() {
@@ -52,6 +52,16 @@ export default function Footer() {
             <History className="w-5 h-5" />
             <span>{t("footerChangelog")}</span>
           </Link>
+
+          <div className="w-px h-4 bg-slate-850"></div>
+          
+          <button
+            onClick={() => window.dispatchEvent(new Event('trigger-install'))}
+            className="flex items-center gap-2 text-slate-400 hover:text-brand-bronze transition-colors text-sm font-medium cursor-pointer"
+          >
+            <Download className="w-5 h-5" />
+            <span>{t("footerDownload")}</span>
+          </button>
         </div>
 
         <a
