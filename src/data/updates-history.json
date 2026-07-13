@@ -1,14 +1,78 @@
 [
   {
-    "version": "v1.0.0",
+    "version": "v0.1.0",
     "date": "2026-06-18",
-    "features": [
+    "features_ar": [
       "إطلاق المنصة رسمياً بشكل مفتوح المصدر ومستقل تماماً (Serverless).",
       "إلغاء الحاجة لخوادم إضافية وتوفير نظام إضافة الألعاب عبر GitHub أو البريد الإلكتروني مباشرة.",
       "فصل خيارات الإجابة في ألعاب سؤال وجواب (MCQ) وعرضها في شبكة تفاعلية منفصلة وأنيقة.",
       "توفير ثلاث حزم رئيسية للعب: الفردي، وتحدي الفريقين، واللعب الجماعي.",
       "تطبيق نظام المؤقت الذكي لدعم الحزم التنافسية.",
       "تطبيق نظام الإقصاء (Knockout) للعبة الفردي والجماعي."
+    ],
+    "features_en": [
+      "Official launch of the platform as a fully open-source and serverless app.",
+      "Eliminated the need for extra servers; games can be added via GitHub or email directly.",
+      "MCQ answer options are now separated into a clean, interactive grid layout.",
+      "Three main play modes available: Solo, Two-Team Challenge, and Group Play.",
+      "Smart timer system implemented to support competitive modes.",
+      "Knockout (elimination) system applied to Solo and Group play modes."
+    ],
+    "commitLink": "https://github.com/Imhotep-Tech/dastet-al3ab"
+  },
+  {
+    "version": "v0.2.0",
+    "date": "2026-07-05",
+    "features_ar": [
+      "إضافة بانر تثبيت تطبيق PWA وتحديث تصميم الشاشة الرئيسية.",
+      "إعادة هيكلة الكود لتحسين القراءة وسهولة الصيانة.",
+      "إضافة Google Site Verification إلى بيانات الميتا."
+    ],
+    "features_en": [
+      "Added PWA install banner and updated layout styles.",
+      "Refactored code structure for improved readability and maintainability.",
+      "Added Google Site Verification to the metadata."
+    ],
+    "commitLink": "https://github.com/Imhotep-Tech/dastet-al3ab"
+  },
+  {
+    "version": "v0.3.0",
+    "date": "2026-07-08",
+    "features_ar": [
+      "إضافة أكثر من 100 بطاقة جديدة لكل لعبة متوفرة على المنصة."
+    ],
+    "features_en": [
+      "Added over 100 new cards to every available game on the platform."
+    ],
+    "commitLink": "https://github.com/Imhotep-Tech/dastet-al3ab"
+  },
+  {
+    "version": "v0.4.0",
+    "date": "2026-07-11",
+    "features_ar": [
+      "تحديث تعليمات وعناوين الألعاب لتوصيل أفضل وتجربة أوضح باللغة العربية.",
+      "تحسينات على محركات الألعاب وميزات جديدة في واجهة المستخدم."
+    ],
+    "features_en": [
+      "Updated game instructions and titles for better clarity and engagement in Arabic.",
+      "Enhanced game engines with new features and UI improvements."
+    ],
+    "commitLink": "https://github.com/Imhotep-Tech/dastet-al3ab"
+  },
+  {
+    "version": "v1.0.0",
+    "date": "2026-07-13",
+    "features_ar": [
+      "إضافة زر تنزيل التطبيق في الفوتر لتسهيل الوصول.",
+      "عرض تعليمات تثبيت خطوة بخطوة لمستخدمي iOS عبر نافذة منبثقة أنيقة.",
+      "كشف متصفح Samsung Internet والمتصفحات غير الداعمة وعرض رسالة إرشادية تطلب التبديل إلى Chrome أو أي متصفح Chromium.",
+      "إخفاء بانر التثبيت بشكل دائم عند الضغط على زر الإغلاق (لا يظهر مجدداً عند تغيير الصفحة)."
+    ],
+    "features_en": [
+      "Added a Download App button in the footer for easy access to the install prompt.",
+      "Step-by-step iOS install instructions displayed via a polished modal popup.",
+      "Samsung Internet and unsupported browsers are detected, showing a guide to switch to Chrome or a Chromium-based browser.",
+      "The install banner is now permanently dismissed when the user closes it (no longer reappears on page changes)."
     ],
     "commitLink": "https://github.com/Imhotep-Tech/dastet-al3ab"
   }
